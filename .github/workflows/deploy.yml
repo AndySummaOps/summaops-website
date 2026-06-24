@@ -20,24 +20,52 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Find app folder
+        id: app
+        run: |
+          if [ -f package.json ]; then
+            echo "dir=." >> "$GITHUB_OUTPUT"
+          elif [ -f SummaOps/package.json ]; then
+            echo "dir=SummaOps" >> "$GITHUB_OUTPUT"
+          else
+            echo "Geen package.json gevonden in root of SummaOps/"
+            exit 1
+          fi
+
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
+          cache-dependency-path: ${{ steps.app.outputs.dir }}/package-lock.json
 
-      - run: npm ci
+      - name: Install dependencies
+        working-directory: ${{ steps.app.outputs.dir }}
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
 
       - name: Build static site
+        working-directory: ${{ steps.app.outputs.dir }}
         run: npm run build
         env:
           GITHUB_PAGES: "true"
           GITHUB_PAGES_BASE_PATH: ${{ github.event.repository.name }}
 
-      - run: touch out/.nojekyll
+      - name: Add .nojekyll
+        working-directory: ${{ steps.app.outputs.dir }}
+        run: |
+          if [ ! -f out/index.html ]; then
+            echo "Build mislukt: out/index.html ontbreekt"
+            exit 1
+          fi
+          touch out/.nojekyll
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: out
+          path: ${{ steps.app.outputs.dir }}/out
 
   deploy:
     needs: build
