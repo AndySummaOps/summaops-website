@@ -52,6 +52,7 @@ jobs:
         run: npm run build
         env:
           GITHUB_PAGES: "true"
+          GITHUB_PAGES_CUSTOM_DOMAIN: "true"
           GITHUB_PAGES_BASE_PATH: ${{ github.event.repository.name }}
 
       - name: Add .nojekyll

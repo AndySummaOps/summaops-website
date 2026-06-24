@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const isGithubPages = process.env.GITHUB_PAGES === "true"
+const useCustomDomain = process.env.GITHUB_PAGES_CUSTOM_DOMAIN === "true"
 const repoName = process.env.GITHUB_PAGES_BASE_PATH || "SummaOps"
-const basePath = isGithubPages ? `/${repoName}` : ""
+const basePath = isGithubPages && !useCustomDomain ? `/${repoName}` : ""
 
 const nextConfig = {
   output: "export",
