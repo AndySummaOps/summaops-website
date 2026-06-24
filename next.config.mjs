@@ -13,7 +13,7 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true,
-  },a
+  },
   images: {
     unoptimized: true,
   },
