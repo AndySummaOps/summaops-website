@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Mail, Phone, MapPin, Clock, CheckCircle2 } from 'lucide-react'
+import { Mail, MapPin, Clock, CheckCircle2 } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 import { PageHero } from '@/components/page-hero'
 import { ContactForm } from '@/components/contact-form'
@@ -16,12 +16,6 @@ const details = [
     label: 'E-mail',
     value: 'hello@summaops.nl',
     href: 'mailto:hello@summaops.nl',
-  },
-  {
-    icon: Phone,
-    label: 'Telefoon',
-    value: '+31 (0)6 00 00 00 00',
-    href: 'tel:+31000000000',
   },
   { icon: MapPin, label: 'Regio', value: 'Limburg, Nederland' },
   { icon: Clock, label: 'Reactietijd', value: 'Binnen 1 werkdag' },

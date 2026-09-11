@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react'
+import { ArrowRight, Mail, MapPin } from 'lucide-react'
 import { Logo } from '@/components/logo'
 
 const columns = [
@@ -73,15 +73,6 @@ export function SiteFooter() {
                   className="transition-colors hover:text-foreground"
                 >
                   hello@summaops.nl
-                </a>
-              </li>
-              <li className="flex items-center gap-2.5">
-                <Phone className="size-4 text-primary" />
-                <a
-                  href="tel:+31000000000"
-                  className="transition-colors hover:text-foreground"
-                >
-                  +31 (0)6 00 00 00 00
                 </a>
               </li>
               <li className="flex items-center gap-2.5">

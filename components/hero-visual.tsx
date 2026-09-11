@@ -1,4 +1,11 @@
-import { Activity, ArrowUpRight, Bot, Workflow, Zap } from 'lucide-react'
+import {
+  ArrowRight,
+  CheckCircle2,
+  FileSpreadsheet,
+  HelpCircle,
+  MessageCircle,
+  Sparkles,
+} from 'lucide-react'
 
 export function HeroVisual() {
   return (
@@ -6,10 +13,10 @@ export function HeroVisual() {
       {/* glow */}
       <div
         aria-hidden="true"
-        className="absolute -inset-8 -z-10 rounded-[2rem] bg-[radial-gradient(60%_60%_at_70%_20%,oklch(0.72_0.16_215/0.25),transparent_70%),radial-gradient(50%_50%_at_20%_80%,oklch(0.62_0.18_280/0.22),transparent_70%)] blur-2xl"
+        className="absolute -inset-8 -z-10 rounded-[2rem] bg-[radial-gradient(60%_60%_at_70%_20%,oklch(0.72_0.16_215/0.22),transparent_70%),radial-gradient(50%_50%_at_20%_80%,oklch(0.62_0.18_280/0.2),transparent_70%)] blur-2xl"
       />
 
-      <div className="glow-ring relative overflow-hidden rounded-2xl border border-border bg-card/80 p-4 backdrop-blur-xl sm:p-5">
+      <div className="glow-ring relative overflow-hidden rounded-2xl border border-border bg-card/80 p-4 backdrop-blur-xl sm:p-6">
         {/* top bar */}
         <div className="flex items-center justify-between border-b border-border pb-3">
           <div className="flex items-center gap-2">
@@ -18,76 +25,83 @@ export function HeroVisual() {
             <span className="size-2.5 rounded-full bg-muted-foreground/40" />
           </div>
           <span className="text-xs font-medium text-muted-foreground">
-            SummaOps · overzicht
+            Van chaos naar overzicht
           </span>
         </div>
 
-        {/* stat cards */}
-        <div className="mt-4 grid grid-cols-2 gap-3">
-          <div className="rounded-xl border border-border bg-background/50 p-4">
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Zap className="size-4 text-primary" />
-              <span className="text-xs">Tijd bespaard</span>
+        {/* before / after */}
+        <div className="mt-5 grid gap-5 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
+          <div>
+            <p className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+              Nu
+            </p>
+            <div className="mt-3 flex flex-col items-start gap-2">
+              <span className="inline-flex -rotate-2 items-center gap-2 rounded-lg border border-dashed border-border bg-background/50 px-3 py-2 text-xs text-muted-foreground">
+                <FileSpreadsheet className="size-3.5 shrink-0" />
+                Losse spreadsheets
+              </span>
+              <span className="inline-flex rotate-1 items-center gap-2 rounded-lg border border-dashed border-border bg-background/50 px-3 py-2 text-xs text-muted-foreground">
+                <MessageCircle className="size-3.5 shrink-0" />
+                WhatsApp &amp; mail
+              </span>
+              <span className="inline-flex -rotate-1 items-center gap-2 rounded-lg border border-dashed border-border bg-background/50 px-3 py-2 text-xs text-muted-foreground">
+                <HelpCircle className="size-3.5 shrink-0" />
+                Wie deed dit ook alweer?
+              </span>
             </div>
-            <p className="mt-2 text-2xl font-semibold tracking-tight">18u</p>
-            <p className="text-xs text-muted-foreground">deze week</p>
           </div>
-          <div className="rounded-xl border border-border bg-background/50 p-4">
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Workflow className="size-4 text-primary" />
-              <span className="text-xs">Taken automatisch</span>
-            </div>
-            <p className="mt-2 text-2xl font-semibold tracking-tight">94%</p>
-            <p className="text-xs text-muted-foreground">van het proces</p>
-          </div>
-        </div>
 
-        {/* chart */}
-        <div className="mt-3 rounded-xl border border-border bg-background/50 p-4">
-          <div className="flex items-center justify-between">
-            <span className="text-xs text-muted-foreground">
-              Handmatig werk
-            </span>
-            <span className="inline-flex items-center gap-1 text-xs font-medium text-primary">
-              <ArrowUpRight className="size-3.5 -rotate-90" />
-              dalend
-            </span>
+          <div
+            aria-hidden="true"
+            className="flex items-center justify-center text-primary"
+          >
+            <ArrowRight className="size-5 rotate-90 sm:rotate-0" />
           </div>
-          <div className="mt-4 flex h-24 items-end gap-1.5">
-            {[60, 52, 58, 44, 40, 33, 30, 22, 26, 18, 14, 10].map((h, i) => (
-              <div
-                key={i}
-                style={{ height: `${h}%` }}
-                className="flex-1 rounded-t bg-gradient-to-t from-primary/30 to-primary"
-              />
-            ))}
+
+          <div>
+            <p className="text-xs font-semibold tracking-wide text-primary uppercase">
+              Met SummaOps
+            </p>
+            <div className="mt-3 flex flex-col gap-2">
+              {[
+                'Eén centraal overzicht',
+                'Automatische opvolging',
+                'Altijd actuele data',
+              ].map((t) => (
+                <span
+                  key={t}
+                  className="inline-flex items-center gap-2 rounded-lg border border-primary/25 bg-primary/10 px-3 py-2 text-xs font-medium text-foreground"
+                >
+                  <CheckCircle2 className="size-3.5 shrink-0 text-primary" />
+                  {t}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* flow row */}
-        <div className="mt-3 flex items-center gap-2 rounded-xl border border-border bg-background/50 p-3">
+        <div className="mt-5 flex items-center gap-2 rounded-xl border border-border bg-background/50 p-3">
           <span className="inline-flex items-center gap-1.5 rounded-lg bg-primary/15 px-2.5 py-1.5 text-xs font-medium text-primary">
-            <Activity className="size-3.5" /> Trigger
+            <Sparkles className="size-3.5" /> AI-agent verwerkt
           </span>
           <span className="h-px flex-1 bg-gradient-to-r from-primary/50 to-accent/50" />
           <span className="inline-flex items-center gap-1.5 rounded-lg bg-accent/15 px-2.5 py-1.5 text-xs font-medium text-accent-foreground">
-            <Bot className="size-3.5" /> AI verwerkt
-          </span>
-          <span className="h-px flex-1 bg-gradient-to-r from-accent/50 to-primary/50" />
-          <span className="inline-flex items-center gap-1.5 rounded-lg bg-primary/15 px-2.5 py-1.5 text-xs font-medium text-primary">
-            Klaar
+            Klaar, geen handwerk
           </span>
         </div>
       </div>
 
       {/* floating badge */}
       <div className="absolute -bottom-5 -left-4 hidden animate-[float_6s_ease-in-out_infinite] items-center gap-2.5 rounded-xl border border-border bg-card/90 px-4 py-3 backdrop-blur-xl sm:flex">
-        <span className="flex size-9 items-center justify-center rounded-lg bg-primary/15">
-          <Bot className="size-4.5 text-primary" />
+        <span className="flex size-9 items-center justify-center rounded-lg bg-warm/15">
+          <Sparkles className="size-4.5 text-warm" />
         </span>
         <div>
-          <p className="text-sm font-semibold leading-none">AI-agent actief</p>
-          <p className="mt-1 text-xs text-muted-foreground">3 taken afgerond</p>
+          <p className="text-sm font-semibold leading-none">Minder handwerk</p>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Elke week tijd terug
+          </p>
         </div>
       </div>
     </div>
