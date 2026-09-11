@@ -323,17 +323,17 @@ export default function HomePage() {
               title="Een partner die meedenkt, niet alleen bouwt"
             />
           </Reveal>
-          <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
             {reasons.map((r, i) => (
               <Reveal key={r.title} delay={(i % 3) * 70}>
-                <div className="h-full rounded-2xl border border-border bg-card/50 p-6">
+                <div className="flex flex-col gap-3">
                   <span className="inline-flex size-11 items-center justify-center rounded-xl bg-primary/15 text-primary">
                     <r.icon className="size-5" />
                   </span>
-                  <h3 className="mt-5 text-lg font-semibold text-balance">
+                  <h3 className="text-lg font-semibold text-balance">
                     {r.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-sm leading-relaxed text-muted-foreground">
                     {r.text}
                   </p>
                 </div>
@@ -408,20 +408,30 @@ export default function HomePage() {
               description="Een duidelijk proces in vijf stappen, waarbij je altijd weet waar je aan toe bent."
             />
           </Reveal>
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-            {steps.map((step, i) => (
-              <Reveal key={step.n} delay={i * 60}>
-                <div className="relative h-full rounded-2xl border border-border bg-card/50 p-6">
-                  <span className="text-sm font-semibold text-primary">
-                    {step.n}
-                  </span>
-                  <h3 className="mt-3 text-base font-semibold">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {step.text}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
+          <div className="relative mx-auto mt-14 max-w-2xl">
+            <div
+              aria-hidden="true"
+              className="absolute top-5 bottom-5 left-5 w-px bg-border sm:left-6"
+            />
+            <div className="flex flex-col gap-10">
+              {steps.map((step, i) => (
+                <Reveal key={step.n} delay={i * 60}>
+                  <div className="relative flex gap-5 sm:gap-6">
+                    <span className="relative z-10 flex size-10 shrink-0 items-center justify-center rounded-full border border-warm/40 bg-card text-sm font-semibold text-warm sm:size-12">
+                      {step.n}
+                    </span>
+                    <div className="pt-1">
+                      <h3 className="text-base font-semibold sm:text-lg">
+                        {step.title}
+                      </h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                        {step.text}
+                      </p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
